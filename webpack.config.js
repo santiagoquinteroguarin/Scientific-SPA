@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     // ?Punto de entrada con su dirección. Aquí vive el código inicial y de aquí parte al desarrollo.
@@ -32,7 +33,7 @@ module.exports = {
     },
     plugins: [
         // ?Permite trabajar con los archivos HTML
-        new HtmlWebpackPlugin([
+        new HtmlWebpackPlugin(
             {
                 // ?Cómo vamos a inyectar un valor a un archivo HTML.
                 inject: true, 
@@ -41,6 +42,10 @@ module.exports = {
                 // ?El nombre que tendrá el archivo
                 filename: './index.html',
             }
-        ])
+        ),
+        new CopyWebpackPlugin({
+            patterns: [{ from: './src/styles/styles.css',
+            to: '' }],
+        }),
     ]
 }
