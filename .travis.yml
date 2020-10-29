@@ -8,7 +8,7 @@ git:
   depth: 3
 script:
   - yarn build
-deploy: 
+deploy:
   provider: pages
   edge: true
   skip-cleanup: true
